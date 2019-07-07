@@ -1,0 +1,403 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <!--product.cost.transport-->
+        <record model="ir.ui.view" id="view_product_cost_transport_form">
+            <field name="name">product.cost.transport.form</field>
+            <field name="model">product.cost.transport</field>
+            <field name="arch" type="xml">
+                <form string="Cost transport" version="7.0">        
+                    <sheet>
+                        <group col="4" colspan="4">
+                            <field name="name" />
+                            <newline/>
+                            <field name="cost" />
+                            <field name="volume" />
+                            <separator string="Note" colspan="4" />
+                            <field name="note" colspan="4" nolabel="1" />
+                        </group>
+                    </sheet>        
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_product_cost_transport_tree">
+            <field name="name">product.cost.transport.tree</field>
+            <field name="model">product.cost.transport</field>
+            <field name="arch" type="xml">
+                <tree string="Cost transport" version="7.0">        
+                    <field name="name" />
+                    <field name="cost" />
+                    <field name="volume" />
+                    <field name="note" colspan="4" nolabel="1" />
+                </tree>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_product_cost_transport">
+            <field name="name">Transport</field>
+            <field name="res_model">product.cost.transport</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_product_cost_transport_tree"/>
+            <field name="context">{}</field>
+            <field name="domain">[]</field>
+        </record>
+        
+        <!--product.cost.method-->
+        <record model="ir.ui.view" id="view_product_cost_method_form">
+            <field name="name">product.cost.method.form</field>
+            <field name="model">product.cost.method</field>
+            <field name="arch" type="xml">
+                <form string="Cost method" version="7.0">        
+                    <sheet>
+                        <group col="4" colspan="4">
+                            <field name="name" />
+                            <field name="category" invisible="context.get('product_embedded', False)"/>
+                            <field name="transport_id" />
+                            <field name="force_exchange" />                            
+                            <field name="round" />                            
+                            <separator string="Rule" colspan="4" />
+                            <field name="rule_ids" colspan="4" nolabel="1">
+                                <tree string="Rule" editable="bottom">
+                                    <field name="sequence" />
+                                    <field name="name" />
+                                    <field name="operation" />
+                                    <field name="mode" attrs="{'readonly': [('operation','in',('duty', 'exchange', 'transport'))]}"/>
+                                    <field name="value" attrs="{'readonly': [('operation','in',('duty', 'exchange', 'transport'))]}"/>
+                                    <field name="note" />
+                                </tree>
+                            </field>
+                            <separator string="Note" colspan="4" />
+                            <field name="note" colspan="4" nolabel="1" />
+                        </group>
+                    </sheet>        
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_product_cost_method_tree">
+            <field name="name">product.cost.method.tree</field>
+            <field name="model">product.cost.method</field>
+            <field name="arch" type="xml">
+                <tree string="Cost method" version="7.0">        
+                    <field name="name" />
+                    <field name="category" />
+                    <field name="transport_id" />
+                    <field name="note" />
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_product_cost_method_search">
+            <field name="name">product.cost.method.search</field>
+            <field name="model">product.cost.method</field>
+            <field name="arch" type="xml">
+                <search string="Cost method" version="7.0">        
+                    <field name="name" />
+                    <field name="category" />
+                    <field name="transport_id" />
+                    <group expand="0" string="Group By...">
+                        <filter name="group_category" string="Category" context="{'group_by': 'category_id'}"/>
+                        <filter name="group_transport" string="Transport" context="{'group_by': 'transport_id'}"/>
+                    </group>                
+                </search>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_product_cost_method">
+            <field name="name">Cost method</field>
+            <field name="res_model">product.cost.method</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_product_cost_method_tree"/>
+            <field name="search_view_id" ref="view_product_cost_method_search"/>            
+            <field name="context">{}</field>
+            <field name="domain">[]</field>
+        </record>
+
+        <record model="ir.ui.view" id="view_product_product_cost_form">
+            <field name="name">product.product.form</field>
+            <field name="model">product.product</field>
+            <field name="priority" eval="60" />
+            <field name="arch" type="xml">
+                <form string="String" version="7.0">        
+                    <sheet>
+                        <group col="4" colspan="4">
+                            <field name="name" />
+                            <field name="default_code" />
+                            <button name="open_normal_form_view" string="Normal product" type="object" icon="gtk-dnd"/>
+
+                            <notebook colspan="4">
+                                <page string="Cost generation">
+                                    <group col="8" colspan="4">
+                                        <group col="3" colspan="2">
+                                            <separator string="Cost FOB (supplier) >>>" colspan="3"/>
+                                            <field name="standard_price" string="Cost FOB"/>
+                                            <field name="cost_currency_id" nolabel="1" />
+                                            <separator string="--------------------------------------" colspan="3"/>
+                                            <!--<field name="supplier_cost" />-->
+                                            <field name="company_method_id" context="{'default_category':'company', 'product_embedded':True}" domain="[('category','=','company')]" />
+                                            <newline/>
+                                            <button name="calculate_cost_method_company" string="Generate f/company" icon="gtk-execute" type="object" attrs="{'invisible': [('company_method_id','=',False)]}" colspan="3" />
+                                            <field name="company_calc" attrs="{'invisible': [('company_method_id','=',False)]}" widget="html" nolabel="1" colspan="3"/>
+                                            <field name="company_calc_error" attrs="{'invisible': [('company_calc_error','=',False)]}" widget="html" nolabel="1" colspan="3"/>
+                                            <field name="company_calc_warning" attrs="{'invisible': [('company_calc_warning','=',False)]}" widget="html" nolabel="1" colspan="3"/>
+                                        </group>
+                                        
+                                        <group col="2" colspan="2">
+                                            <separator string="F / Our stock >>>" colspan="2"/>
+                                            <field name="company_cost" />
+                                            <separator string="--------------------------------------" colspan="2"/>
+                                            <field name="customer_method_id" context="{'default_category':'customer', 'product_embedded':True}" domain="[('category','=','customer')]" />
+                                            <button name="calculate_cost_method_customer" string="Generate f/customer" icon="gtk-execute" type="object" attrs="{'invisible': [('customer_method_id','=',False)]}" colspan="2" />
+                                            <field name="customer_calc" attrs="{'invisible': [('customer_method_id','=',False)]}" widget="html" nolabel="1"  colspan="2"/>
+                                            <field name="customer_calc_error" attrs="{'invisible': [('customer_calc_error','=',False)]}" widget="html" nolabel="1"  colspan="2"/>
+                                            <field name="customer_calc_warning" attrs="{'invisible': [('customer_calc_warning','=',False)]}" widget="html" nolabel="1"  colspan="2"/>
+                                        </group>                                                            
+                                        <group col="2" colspan="2">
+                                            <separator string="FCO / Customer >>>" colspan="2"/>
+                                            <field name="customer_cost" />
+                                            <separator string="--------------------------------------" colspan="2"/>
+                                            <field name="pricelist_method_id" context="{'default_category':'pricelist', 'product_embedded':True}" domain="[('category','=','pricelist')]" />
+                                            <button name="calculate_cost_method_pricelist" string="Generate pricelist" icon="gtk-execute" type="object" attrs="{'invisible': [('pricelist_method_id','=',False)]}" colspan="2" />
+                                            <field name="pricelist_calc" attrs="{'invisible': [('pricelist_method_id','=',False)]}" widget="html" nolabel="1"  colspan="2"/>
+                                            <field name="pricelist_calc_error" attrs="{'invisible': [('pricelist_calc_error','=',False)]}" widget="html" nolabel="1"  colspan="2"/>
+                                            <field name="pricelist_calc_warning" attrs="{'invisible': [('pricelist_calc_warning','=',False)]}" widget="html" nolabel="1"  colspan="2"/>
+                                        </group>                                
+                                        <group col="2" colspan="2">
+                                            <separator string="Pricelist" colspan="2"/>
+                                            <field name="lst_price" />
+                                            <separator string="--------------------------------------" colspan="2"/>
+                                        </group> 
+                                    </group>                            
+                                </page>
+                                <page string="Duty data">
+                                    <group col="4" colspan="4">
+                                        <field name="first_supplier_id" />
+                                        <newline/>
+                                        <field name="duty_id" />
+                                        <field name="duty_code" />
+
+                                        <separator string="Duty for set:" colspan="4"/>
+                                        <field name="is_duty_set" />     
+                                        <field name="duty_set_reference" /> 
+                                        <field name="duty_set_ids" nolabel="1" attrs="{'invisible':[('is_duty_set','=',False)]}" colspan="4" >
+                                            <tree string="Duty set" editable="bottom">
+                                                <field name="product_id" invisible="1" />
+                                                <field name="duty_id" />
+                                                <field name="partial_value" />
+                                                <field name="partial" />
+                                                <field name="note" />
+                                            </tree>
+                                        </field>
+                                    </group>
+                                </page>
+                                <page string="Volume data">
+                                    <group col="6" colspan="4">
+                                        <separator string="Product pack" colspan="6"/>
+                                        <field name="pack_l" />
+                                        <field name="pack_h" />
+                                        <field name="pack_p" />
+                                        <field name="q_x_pack" />
+                                    </group>  
+                                    <group colspan="4" col="4"> 
+                                        <field name="has_multipackage" />
+                                        <newline/>
+                                        <separator string="Dimension in pack extra description" colspan="4"/>                        
+                                        <field name="multipack_dimension" nolabel="1"/>
+                                        <field name="type" invisible="1" />
+                                        <separator string="Packaging" colspan="4" attrs="{'invisible':['|',('has_multipackage','=',False),('type','=','service')]}"/>
+                                        <!--TODO add onchange for ul block-->
+                                        <field name="multi_pack_ids" attrs="{'invisible':['|',('has_multipackage','=',False),('type','=','service')]}" nolabel="1">
+                                            <tree string="Multipack">
+                                                <field name="sequence" />
+                                                <field name="ul_id" />
+                                                <field name="code" />
+                                                <field name="name" />
+                                                <field name="number" sum='total'/>
+                                                <field name="height" />
+                                                <field name="width" />
+                                                <field name="length" />
+                                                <field name="weight" />
+                                            </tree>
+                                            <form string="Multipack">
+                                                <sheet>
+                                                    <group col="4">
+                                                        <field name="sequence" />
+                                                        <field name="code" />
+
+                                                        <field name="name" />
+                                                        <field name="ul_id" />
+
+                                                        <field name="number" />
+                                                        <field name="weight" />
+
+                                                        <field name="height" />
+                                                        <field name="width" />
+                                                        <field name="length" />
+                                                    </group>
+                                                </sheet>
+                                            </form>
+                                        </field>
+                                    </group>                                    
+                                </page>
+                                <page string="Transport">
+                                    <group col="4" colspan="4">
+                                        <field name="transport_ids" nolabel="1">
+                                            <tree string="Transport" editable="bottom">
+                                                <field name="transport_id" />
+                                                <field name="calc_note" />
+                                                <field name="quantity" />
+                                            </tree>                                            
+                                        </field>
+                                    </group>
+                                </page>    
+                            </notebook>                            
+                        </group>
+                    </sheet>        
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_product_product_cost_tree">
+            <field name="name">product.product.tree</field>
+            <field name="model">product.product</field>
+            <field name="priority" eval="60" />
+            <field name="arch" type="xml">
+                <tree string="String" version="7.0">        
+                    <field name="name" />
+                    <field name="default_code" />
+                    <field name="q_x_pack" />
+                    <field name="duty_id" />
+                    <field name="duty_code" />
+                    <field name="first_supplier_id" />
+                    <field name="standard_price" />
+                    <field name="company_method_id" />
+                    <button name="calculate_cost_method_company" string="Generate f/company" icon="gtk-execute" type="object" attrs="{'invisible': [('company_method_id','=',False)]}" />
+                    <field name="company_cost" />
+                    <field name="customer_method_id" />
+                    <button name="calculate_cost_method_customer" string="Generate f/customer" icon="gtk-execute" type="object" attrs="{'invisible': [('customer_method_id','=',False)]}"/>
+                    <field name="customer_cost" />
+                    <field name="pricelist_method_id" />
+                    <button name="calculate_cost_method_pricelist" string="Generate pricelist" icon="gtk-execute" type="object" attrs="{'invisible': [('pricelist_method_id','=',False)]}"/>
+                    <field name="lst_price" />
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_product_product_cost_search">
+            <field name="name">product.product.search</field>
+            <field name="model">product.product</field>
+            <field name="priority" eval="60" />
+            <field name="arch" type="xml">
+                <search string="Cost method" version="7.0">        
+                    <field name="default_code" />
+                    <field name="name" />
+                    
+                    <field name="company_method_id" />
+                    <field name="customer_method_id" />
+                    <field name="pricelist_method_id" />
+
+                    <field name="duty_id" />
+                    <field name="first_supplier_id" />
+                    
+                    <!--<filter name="state_error" string="Cost error" domain="[('cost_error','=',True)]"/>
+                    <filter name="state_warning" string="Cost warning" domain="[('cost_warning','=',True)]"/>-->
+                    
+                    <group expand="0" string="Group By...">
+                        <!--<filter name="group_error" string="Cost error" context="{'group_by': 'cost_error'}"/>
+                        <filter name="group_warning" string="Cost warning" context="{'group_by': 'cost_warning'}"/>-->
+                        <filter name="group_company" string="Company method" context="{'group_by': 'company_method_id'}"/>
+                        <filter name="group_customer" string="Customer method" context="{'group_by': 'customer_method_id'}"/>
+                        <filter name="group_pricelist" string="Pricelist method" context="{'group_by': 'pricelist_method_id'}"/>
+                        
+                        <filter name="group_supplier" string="Supplier" context="{'group_by': 'first_supplier_id'}"/>
+                        <filter name="group_duty" string="Duty category" context="{'group_by': 'duty_id'}"/>
+                    </group>                
+                </search>
+            </field>
+        </record>   
+        <record model="ir.actions.act_window" id="action_product_product_cost_tree">
+            <field name="name">Cost product</field>
+            <field name="res_model">product.product</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_product_product_cost_tree"/>
+            <field name="search_view_id" ref="view_product_product_cost_search"/>
+            <field name="context">{'form_view_ref': 'product_cost_rule.view_product_product_cost_form'}</field>
+            <field name="domain">[]</field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_res_currency_extra_rate_form">
+            <field name="name">res.currency.extra.rate</field>
+            <field name="model">res.currency</field>
+            <field name="inherit_id" ref="base.view_currency_form"/>
+            <field name="arch" type="xml">
+                <field name="rate_silent" position="after">
+                    <field name="rate_silent_cost" />
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_res_partner_extra_cost_form">
+            <field name="name">res.partner.extra.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <field name="property_account_position" position="after">
+                    <field name="cost_currency_id" />
+                    <field name="transport_id" />
+                </field>
+            </field>
+        </record>
+        
+        <!--Button for open view from product-->
+        <record model="ir.ui.view" id="view_product_open_cost_tree">
+            <field name="name">product.product.cost.tree</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_product_tree_view"/>
+            <field name="arch" type="xml">
+                <field name="lst_price" position="after">
+                    <button name="open_cost_form_view" string="Manage cost" type="object" icon="gtk-execute"/>
+                </field>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_product_open_cost_form">
+            <field name="name">product.product.cost.form</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="before">
+                    <button name="open_cost_form_view" string="Manage cost" type="object" icon="gtk-execute"/>
+                </xpath>
+            </field>
+        </record>
+        
+        <!--MENU STRUCTURE:-->
+        <menuitem 
+            parent="stock.menu_stock_configuration" 
+            id="menu_product_cost_root" 
+            name="Cost calc method"
+            />
+            <menuitem
+                parent="menu_product_cost_root" 
+                id="menu_product_product_cost" 
+                action="action_product_product_cost_tree"
+                sequence="10"
+                />
+            <menuitem
+                parent="menu_product_cost_root" 
+                id="menu_product_cost_method" 
+                action="action_product_cost_method"
+                sequence="20"
+                />
+            <menuitem
+                parent="menu_product_cost_root" 
+                id="menu_product_cost_transport" 
+                action="action_product_cost_transport"
+                sequence="30"
+                />
+            <menuitem
+                parent="menu_product_cost_root" 
+                id="menu_product_custom_duty" 
+                action="duty_management.product_custom_duty_action"
+                sequence="90"
+                />
+    </data>
+</openerp>
+

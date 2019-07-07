@@ -1,0 +1,282 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+         <!--TODO move away-->
+         <!--<record model="ir.ui.view" id="view_sale_order_stop_inventory__form">
+             <field name="name">sale.order.form</field>
+             <field name="model">sale.order</field>
+             <field name="inherit_id" ref="sale.view_order_form"/>
+             <field name="arch" type="xml">
+                 <field name="name" position="after">
+                     <button name="set_context_no_inventory" string="No inventory" type="object" />
+                     <button name="set_context_yes_inventory" string="Yes inventory" type="object" />
+                 </field>
+             </field>
+         </record>-->
+         <record model="ir.ui.view" id="view_res_users_form">
+             <field name="name">res.users.no_inventory.form</field>
+             <field name="model">res.users</field>
+             <field name="inherit_id" ref="base.view_users_form"/>
+             <field name="arch" type="xml">
+                 <field name="active" position="after">
+                      <field name="no_inventory_status" />
+                 </field> 
+             </field>
+         </record>
+         <record model="ir.ui.view" id="view_res_users__modif_form">
+             <field name="name">res.users.no_inventory.form</field>
+             <field name="model">res.users</field>
+             <field name="inherit_id" ref="base.view_users_form_simple_modif"/>
+             <field name="arch" type="xml">
+                 <field name="lang" position="after">
+                      <field name="no_inventory_status" />
+                 </field> 
+             </field>
+         </record>
+
+        <record id="view_stock_move_ref_form" model="ir.ui.view">
+            <field name="name">stock.move.ref.form</field>
+            <field name="model">stock.move</field>
+            <field name="priority" eval="40" />
+            <field name="arch" type="xml">
+                <tree string="Stock move">
+	                <field name="create_date" readonly="1" />
+	                <field name="date" readonly="1" />
+	                <field name="partner_id" readonly="1"/>
+	                <field name="picking_id" readonly="1"/>
+	                <button name="open_picking_from_stock_move" string="Open picking" type="object" icon="gtk-goto-last"/>
+	                <field name="ddt_id" readonly="1"/>
+	                <field name="product_id" readonly="1"/>
+	                <field name="partner_id" readonly="1"/>
+	                <field name="product_uom_qty" readonly="1" sum="total"/>
+	                <field name="product_uom" string="UM" readonly="1"/>
+	                <field name="product_uos_qty" invisible="1" />
+	                <field name="product_uos" invisible="1" />
+	                <field name="location_id" invisible="1" />
+	                <field name="date_expected" invisible="1"/>
+	                <field name="availability" invisible="1" />
+	                <field name="reserved_availability" invisible="1" />
+	                <field name="location_dest_id" invisible="1"/>
+	                <field name="remaining_qty" invisible="1" />
+	                <field name="string_availability_info" invisible="1"/>
+	                <field name="state" readonly="1"/>
+                </tree>    
+            </field>
+        </record>
+                
+        <record id="product_product_search_view" model="ir.ui.view">
+            <field name="name">product.product.search</field>
+            <field name="model">product.product</field>
+            <field name="priority" eval="40" />
+            <field name="arch" type="xml">
+                <search string="Product">
+                    <field name="name" string="Product" filter_domain="['|',('default_code','ilike',self),('name','ilike',self)]"/>
+                    <field name="default_code" string="Code" filter_domain="[('default_code','ilike',self)]"/>
+                    <field name="statistic_category" string="Stat. category" filter_domain="[('statistic_category','ilike',self)]"/>
+                    <separator/>
+                    <filter name="web_published_on" string="On web" domain="[('web_published','=',True)]"/>                    
+                    <filter name="web_published_off" string="Not on web" domain="[('web_published','=',False)]"/>                    
+                    <group  expand='0' string='Group by...'>
+                       <filter string='Publishing' domain="[]" context="{'group_by' : 'web_published'}"/>
+                       <filter string='Statistic category' domain="[]" context="{'group_by' : 'statistic_category'}"/>
+                       <filter string='Unit of Measure' icon="terp-mrp" domain="[]" context="{'group_by' : 'uom_id'}"/>
+                       <filter string='Type' icon="terp-stock_symbol-selection" domain="[]" context="{'group_by' : 'type'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_web_product_state_web_publish_tree">
+            <field name="name">product.product.web.publish.tree</field>
+            <field name="model">product.product</field>
+            <field name="priority" eval="40" />
+            <field name="arch" type="xml">            
+                <tree string="Web product status" editable="bottom">
+                     <field name="web_published" />
+                     <field name="default_code" readonly="1"/>
+                     <field name="name" readonly="1"/>
+                     
+                     <field name="mx_inv_qty" readonly="1"/>
+                     <!--<field name="mx_mm_qty" readonly="1"/>
+                     <button name="get_movements_in" string="MM load" type="object" icon="gtk-goto-first" />
+                     <button name="get_movements_out" string="MM unload" type="object" icon="gtk-goto-last" />-->
+
+                     <button name="get_movements_inv" string="Inv in" type="object" icon="gtk-goto-last" />
+                     <field name="mx_bf_in" readonly="1"/>
+                     <button name="get_movements_in" string="BF in" type="object" icon="gtk-goto-last" />
+                     <field name="mx_bc_out" readonly="1"/>
+                     <button name="get_movements_out" string="BC out" type="object" icon="gtk-goto-last" />
+
+                     <field name="mx_of_in" readonly="1"/>
+                     <button name="get_movements_of" string="OF in" type="object" icon="gtk-goto-last" />
+                     <field name="mx_oc_out" readonly="1"/>
+                     <button name="get_movements_oc" string="OC out" type="object" icon="gtk-goto-last" />
+                     
+                     <field name="mx_net_qty" readonly="1"/>
+                     <field name="mx_lord_qty" readonly="1"/>
+                     
+                     <field name="mx_mrp_out" readonly="1" />
+                </tree> 
+            </field>
+        </record>   
+
+        <record model="ir.actions.act_window" id="action_web_product_state">
+            <field name="name">Web product state</field>
+            <field name="res_model">product.product</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_web_product_state_web_publish_tree"/>
+            <field name="search_view_id" ref="product_product_search_view"/>
+            <field name="context">{'search_default_web_published_on': True}</field>
+            <field name="domain">[]</field>
+        </record>        
+        <menuitem 
+            parent="product.menu_products" 
+            id="menu_web_product_state" 
+            action="action_web_product_state"
+            />
+        
+        <!--lite view:-->
+        <record model="ir.ui.view" id="view_product_inventory_lite_form">
+            <field name="name">product.product.form</field>
+            <field name="model">product.product</field>
+            <field name="priority" eval="50" />
+            <field name="arch" type="xml">
+                <form string="String" version="7.0">        
+                    <sheet>
+                        <group col="4" colspan="4">
+                           <field name="name" cospan="4"/>
+                           <field name="default_code" />
+                           <newline/>
+
+                           <field name="mx_net_mrp_qty" readonly="1" string="Total net*:" help="Also consider MRP unload"/>
+                           <field name="mx_lord_mrp_qty" readonly="1" string="Total lord*:" help="Also consider MRP unload"/>
+                           <newline/>
+
+                           <field name="mx_start_qty" readonly="1" string="+ Start inventory"/>
+                           <field name="mx_start_date" readonly="1" nolabel="1" help="Date of start inventory"/>
+                           <newline/>
+
+                           <field name="mx_inv_qty" readonly="1" string="+/- Inventory adjust"/>
+                           <button name="get_movements_inv" string="Inv (in)" colspan="2" type="object" icon="gtk-goto-first" class="oe_link" attrs="{'invisible': [('mx_inv_qty', '=', 0)]}"/>
+                           <newline/>
+                           
+                           <field name="mx_bf_in" readonly="1" string="+ MM in (BF, MRP)"/>
+                           <button name="get_movements_in" string="MM (in)" colspan="2" type="object" icon="gtk-goto-first" class="oe_link" attrs="{'invisible': [('mx_bf_in', '=', 0)]}" />
+                           <newline/>
+
+                           <field name="mx_bc_out" readonly="1" string="- MM out (BC, MRP)"/>
+                           <button name="get_movements_out" string="MM (out)" colspan="2" type="object" icon="gtk-goto-first" class="oe_link" attrs="{'invisible': [('mx_bc_out', '=', 0)]}"/>
+                           <newline/>
+
+                           <field name="mx_mrp_out" readonly="1" string="- MRP out" help="MRP calculated dynamically"/>
+                           <newline/>
+
+                           <field name="mx_of_in" readonly="1" string="+ OF in"/>
+                           <button name="get_movements_of"  colspan="2" string="OF (in)" type="object" icon="gtk-goto-first" class="oe_link" attrs="{'invisible': [('mx_of_in', '=', 0)]}" />
+                           <newline/>
+                           <field name="mx_oc_out" readonly="1" string="- OC out"/>
+                           <button name="get_movements_oc" colspan="2" string="OC (out)" type="object" icon="gtk-goto-first" class="oe_link" attrs="{'invisible': [('mx_oc_out', '=', 0)]}" />
+                        </group>
+                    </sheet>        
+                </form>
+            </field>
+        </record>    
+        
+        <record model="ir.ui.view" id="view_product_product_button_status_form">
+            <field name="name">product.product.form</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">        
+                <label for="qty_available" position="attributes">        
+                    <attribute name="invisible">1</attribute>
+                </label>
+                <label for="incoming_qty" position="attributes">        
+                    <attribute name="invisible">1</attribute>
+                </label>
+                <field name="qty_available" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="virtual_available" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <field name="incoming_qty" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+                <!--<button name="336" string="- aggiornamento"-->
+                <label for="qty_available" position="before">
+                    <group colspan="4" col="3">
+                       <button name="button_export_inventory" string="Export state" type="object" />
+                       <newline/>
+                       
+                       <!--TOTAL BLOCK:-->
+                       <field name="mx_net_mrp_qty" readonly="1" string="Total net*:" help="Also consider MRP unload"/>
+                       <newline/>
+                       <!--<field name="mx_net_qty" readonly="1" string="Total net:"/>
+                       <newline/>-->
+                       <field name="mx_lord_mrp_qty" readonly="1" string="Total lord*:" help="Also consider MRP unload"/>
+                       <newline/>
+                       <!--<field name="mx_lord_qty" readonly="1" string="Total lord:" />
+                       <newline/>-->
+
+                       <!--START BLOCK:-->
+                       <field name="mx_start_qty" string="+ Start inventory"/>
+                       <field name="mx_start_date" readonly="1" nolabel="1" help="Date of start inventory"/>
+
+                       <!--MOVEMENT BLOCK:-->
+                       <field name="mx_inv_qty" readonly="1" string="+/- Inventory adjust"/>
+                       <button name="get_movements_inv" string="Inv (in)" type="object" icon="gtk-goto-first" colspan="1" class="oe_link" attrs="{'invisible': [('mx_inv_qty', '=', 0)]}"/>
+                       
+                       <field name="mx_bf_in" readonly="1" string="+ MM in (BF, MRP)"/>
+                       <button name="get_movements_in" string="MM (in)" type="object" icon="gtk-goto-first" colspan="1" class="oe_link" attrs="{'invisible': [('mx_bf_in', '=', 0)]}" />
+
+                       <field name="mx_bc_out" readonly="1" string="- MM out (BC, MRP)"/>
+                       <button name="get_movements_out" string="MM (out)" type="object" icon="gtk-goto-first" colspan="1" class="oe_link" attrs="{'invisible': [('mx_bc_out', '=', 0)]}"/>
+
+                       <field name="mx_mrp_out" readonly="1" string="- MRP out" help="MRP calculated dynamically"/>
+                       <newline/>
+
+                       <!--VIRTUAL BLOCK:-->
+                       <field name="mx_of_in" readonly="1" string="+ OF in"/>
+                       <button name="get_movements_of" string="OF (in)" type="object" icon="gtk-goto-first" colspan="1" class="oe_link" attrs="{'invisible': [('mx_of_in', '=', 0)]}" />
+
+                       <field name="mx_oc_out" readonly="1" string="- OC out"/>
+                       <button name="get_movements_oc" string="OC (out)" type="object" icon="gtk-goto-first" colspan="1" class="oe_link" attrs="{'invisible': [('mx_oc_out', '=', 0)]}" />
+                    </group>
+                </label>    
+            </field>
+        </record>
+         
+         <record model="ir.ui.view" id="view_sale_order_line_tree">
+             <field name="name">sale.order.line.tree</field>
+             <field name="model">sale.order.line</field>
+             <field name="arch" type="xml">
+                 <tree string="Sale order line" editable="bottom">        
+                     <field name="order_id" readonly="1"/>
+                     <field name="partner_id" readonly="1"/>
+                     <field name="name" readonly="1" />
+                     <field name="product_id" readonly="1" /> 
+                     <field name="product_uom" readonly="1" />                     
+                     <field name="product_uom_qty" readonly="1" />
+                     <!--<field name="product_uom_maked_sync_qty" readonly="1" />-->
+                     <field name="delivered_qty" readonly="1" />
+                     <field name="state" readonly="1" />
+                 </tree>
+             </field>
+         </record>
+         <record model="ir.actions.act_window" id="action_sale_order_line">
+             <field name="name">Sale order line analysis</field>
+             <field name="res_model">sale.order.line</field>
+             <field name="view_type">form</field>
+             <field name="view_mode">tree,form</field>
+             <field name="view_id" ref="view_sale_order_line_tree"/>
+             <field name="context">{}</field>
+             <field name="domain">[]</field>
+         </record>
+         <!--<menuitem 
+             parent="sale.menu_sale_order" 
+             id="menu_action_sale_order_line_analysys" 
+             action="action_sale_order_line"/>-->
+    </data>
+</openerp>
+

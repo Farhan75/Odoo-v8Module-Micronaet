@@ -1,0 +1,1079 @@
+<?xml version="1.0"?>
+<openerp>
+    <data noupdate="1">
+        <!--structure.structure-->
+        <record model="structure.structure" id="data_structure_structure_company1">
+            <field name="name">Company product code structure</field>
+            <field name="note">Auto create model for company 1</field>
+        </record>
+        
+        <!--structure.block-->
+        <record model="structure.block" id="data_structure_block_1_3">
+            <field name="name">Parent code</field>
+            <field name="structure_id" ref="data_structure_structure_company1"/>
+            <field name="from_char" eval="1" />
+            <field name="to_char" eval="3" />
+            <field name="mandatory">1</field>
+            <field name="note">First block [0:3] with parent code</field>
+        </record>
+        <record model="structure.block" id="data_structure_block_4_6">
+            <field name="name">Fabric type</field>
+            <field name="structure_id" ref="data_structure_structure_company1"/>
+            <field name="from_char" eval="4" />
+            <field name="to_char" eval="6" />
+            <field name="mandatory">0</field>
+            <field name="note">Second block [3:6] with fabric type</field>
+        </record>
+        <record model="structure.block" id="data_structure_block_7_8">
+            <field name="name">Frame type</field>
+            <field name="structure_id" ref="data_structure_structure_company1"/>
+            <field name="from_char" eval="7" />
+            <field name="to_char" eval="8" />
+            <field name="mandatory">0</field>
+            <field name="note">Third block [6:8] with frame type</field>
+        </record>
+        <record model="structure.block" id="data_structure_block_9_12">
+            <field name="name">Color depend on fabric</field>
+            <field name="structure_id" ref="data_structure_structure_company1"/>
+            <field name="from_char" eval="9" />
+            <field name="to_char" eval="12" />
+            <field name="mandatory">0</field>
+            <field name="rely_id" ref="data_structure_block_4_6"/>
+            
+            <field name="note">Fourth block [8:12] with color depend on fabric type</field>
+        </record>
+        <record model="structure.block" id="data_structure_block_13_13">
+            <field name="name">Particularity</field>
+            <field name="structure_id" ref="data_structure_structure_company1"/>
+            <field name="from_char" eval="13" />
+            <field name="to_char" eval="13" />
+            <field name="mandatory">0</field>
+            <field name="note">Fifth block [13:13] with particularity</field>
+        </record>
+
+        <!--structure.block.value-->
+            <!--PRODUCT CODE ELEMENTS-->
+        <record model="structure.block.value" id="data_structure_block_value_005">
+            <field name="code">005</field>
+            <field name="name">SEDIA REGISTA ALLUM.</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_021">
+            <field name="code">021</field>
+            <field name="name">POLTRONA RELAX LUNA ALLUM.</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_022">
+            <field name="code">022</field>
+            <field name="name">LETTINO QUICK ALLUM.</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_023">
+            <field name="code">023</field>
+            <field name="name">SDRAIO OSCILLANTE DONDOLINA ALLUM.</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_014">
+            <field name="code">014</field>
+            <field name="name">POLTRONA RELAX ALLUM. 5 POS</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_024">
+            <field name="code">024</field>
+            <field name="name">POLTRONA RELAX ALLUM. 5 POS</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_025">
+            <field name="code">025</field>
+            <field name="name">SEDIA DA SPIAGGIA BETTY ALLUM.</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_026">
+            <field name="code">026</field>
+            <field name="name">POLTRONA FIESTA ALLUM. 3 POS.</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_027">
+            <field name="code">027</field>
+            <field name="name">POLTRONA FIESTA ALLUM. 4 POS.</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_028">
+            <field name="code">028</field>
+            <field name="name">SGABELLO CHICO ALLUM.</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_029">
+            <field name="code">029</field>
+            <field name="name">POLTRONA MOVIDA MULTIPOS. ALLUM.</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_030">
+            <field name="code">030</field>
+            <field name="name">POLTRONA MOVIDA XXL ALLUM.</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_031">
+            <field name="code">031</field>
+            <field name="name">LETTINO JOLLY ALLUM. 3 POS.</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_032">
+            <field name="code">032</field>
+            <field name="name">LETTINO/CARRELLO WHEELY ALLUM. CON RUOTE</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_033">
+            <field name="code">033</field>
+            <field name="name">LETTINO JACK ALLUM.</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_034">
+            <field name="code">034</field>
+            <field name="name">LETTINO AMIGO ALLUM. CON PARASOLE</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_035">
+            <field name="code">035</field>
+            <field name="name">LETTINO AMIGO ALLUM.</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_036">
+            <field name="code">036</field>
+            <field name="name">LETTINO AMIGO 40+ ALLUM.</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_037">
+            <field name="code">037</field>
+            <field name="name">LETTINO CASANOVA XXL ALLUM.</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_038">
+            <field name="code">038</field>
+            <field name="name">LETTINO AMIGO XXL ALLUM.</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_039">
+            <field name="code">039</field>
+            <field name="name">LETTINO AMIGO 40+ ALLUM. CON PARASOLE</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_041">
+            <field name="code">041</field>
+            <field name="name">SDRAIO PICCOLINA ALLUM.</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_045">
+            <field name="code">045</field>
+            <field name="name">POLTRONA SAMBA ALLUM. 2 POS.</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_046">
+            <field name="code">046</field>
+            <field name="name">POLTRONA SAMBA ALLUM. 2 POS. CON POGGIAT.</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_048">
+            <field name="code">048</field>
+            <field name="name">CHAISE LONGUE TANGO ALLUM. 2 POS.</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_049">
+            <field name="code">049</field>
+            <field name="name">CHAISE LONGUE TANGO ALLUM. 2 POS.CON POGGIAT.</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_050">
+            <field name="code">050</field>
+            <field name="name">LETTINO BIG FIFTY ALLUM. CON PARASOLE</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_051">
+            <field name="code">051</field>
+            <field name="name">LETTINO BIG FIFTY ALLUM. CON PARASOLE E POGGIAT.</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_061">
+            <field name="code">061</field>
+            <field name="name">POLTRONA LIDO SCHIENALE ALTO ALLUM.</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_062">
+            <field name="code">062</field>
+            <field name="name">POGGIAPIEDI LIDO ALLUM.</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_063">
+            <field name="code">063</field>
+            <field name="name">POLTRONA LIDO SCHIENALE BASSO ALLUM.</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_068">
+            <field name="code">068</field>
+            <field name="name">SEDIA LIDO ALLUM.</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_069">
+            <field name="code">069</field>
+            <field name="name">SEDIA LIDO ALLUM. CON BRACCIOLI</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_070">
+            <field name="code">070</field>
+            <field name="name">LETTINO RIVER ALLUM.</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_071">
+            <field name="code">071</field>
+            <field name="name">LETTINO RIVER ALLUM. CON PARASOLE</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_081">
+            <field name="code">081</field>
+            <field name="name">POLTRONA SPAGHETTI ALLUM.</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_090">
+            <field name="code">090</field>
+            <field name="name">POLTRONA AMIDA MULTIPOS. ALLUM.</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_091">
+            <field name="code">091</field>
+            <field name="name">POLTRONA AMIDA XL MULTIPOS. ALLUM.</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_121">
+            <field name="code">121</field>
+            <field name="name">POLTRONA RELAX LUNA</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_123">
+            <field name="code">123</field>
+            <field name="name">SDRAIO OSCILLANTE DONDOLINA</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_126">
+            <field name="code">126</field>
+            <field name="name">POLTRONA FIESTA 3 POS.</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_127">
+            <field name="code">127</field>
+            <field name="name">POLTRONA FIESTA 4 POS.</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_128">
+            <field name="code">128</field>
+            <field name="name">SGABELLO CHICO</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_129">
+            <field name="code">129</field>
+            <field name="name">POLTRONA MOVIDA MULTIPOS.</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_130">
+            <field name="code">130</field>
+            <field name="name">POLTRONA MOVIDA XXL</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_131">
+            <field name="code">131</field>
+            <field name="name">LETTINO JOLLY 3 POS.</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_132">
+            <field name="code">132</field>
+            <field name="name">LETTINO/CARRELLO WHEELY CON RUOTE</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_135">
+            <field name="code">135</field>
+            <field name="name">LETTINO AMIGO</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record>
+		<record model="structure.block.value" id="data_structure_block_value_145">
+            <field name="code">145</field>
+            <field name="name">POLTRONA SAMBA 2 POS.</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_147">
+            <field name="code">147</field>
+            <field name="name">CHAISE LONGUE TANGO ECO</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_148">
+            <field name="code">148</field>
+            <field name="name">CHAISE LONGUE TANGO</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_149">
+            <field name="code">149</field>
+            <field name="name">CHAISE LONGUE TANGO CON POGGIAT.</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_150">
+            <field name="code">150</field>
+            <field name="name">POLTRONCINA BAMBINO SUSY</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_161">
+            <field name="code">161</field>
+            <field name="name">SGABELLO BITTER H.46 CM</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_162">
+            <field name="code">162</field>
+            <field name="name">SGABELLO BITTER H.62 CM</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_163">
+            <field name="code">163</field>
+            <field name="name">SGABELLO BITTER H.72 CM</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_164">
+            <field name="code">164</field>
+            <field name="name">SGABELLO GINGER H.45 CM</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_165">
+            <field name="code">165</field>
+            <field name="name">SGABELLO GINGER H.62 CM</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_190">
+            <field name="code">190</field>
+            <field name="name">POLTRONA AMIDA MULTIPOS.</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_205">
+            <field name="code">205</field>
+            <field name="name">SEDIA REGISTA</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_223">
+            <field name="code">223</field>
+            <field name="name">SDRAIO OSCILLANTE DONDOLINA TWIN</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_230">
+            <field name="code">230</field>
+            <field name="name">REGISTA LEGNO</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_261">
+            <field name="code">261</field>
+            <field name="name">POLTRONA LIDO SCHIENALE ALTO</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_262">
+            <field name="code">262</field>
+            <field name="name">POGGIAPIEDI LIDO</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_263">
+            <field name="code">263</field>
+            <field name="name">POLTRONA LIDO SCHIENALE BASSO</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_300">
+            <field name="code">300</field>
+            <field name="name">TAVOLO CLUB</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_301">
+            <field name="code">301</field>
+            <field name="name">TAVOLO CLUB ALLUM.</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_322">
+            <field name="code">322</field>
+            <field name="name">TAVOLO TRIS ROTONDO D.53 CM</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_330">
+            <field name="code">330</field>
+            <field name="name">TAVOLO SIRIO ROTONDO D.67 CM</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_331">
+            <field name="code">331</field>
+            <field name="name">TAVOLO SIRIO QUADRATO 67x67 CM</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_332">
+            <field name="code">332</field>
+            <field name="name">TAVOLO SIRIO 50x70 CM</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_334">
+            <field name="code">334</field>
+            <field name="name">TAVOLO 140x67</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_335">
+            <field name="code">335</field>
+            <field name="name">TAVOLO RAFFAELLO 80x120</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_336">
+            <field name="code">336</field>
+            <field name="name">TAVOLO PIEGH. DONATELLO 80x80</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_337">
+            <field name="code">337</field>
+            <field name="name">TAVOLO MICHELANGELO 85x165</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_550">
+            <field name="code">550</field>
+            <field name="name">SEPARE'</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_552">
+            <field name="code">552</field>
+            <field name="name">ANTA SINGOLA PER SEPARE'</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_600">
+            <field name="code">600</field>
+            <field name="name">PARASOLE UNIVERSALE</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_601">
+            <field name="code">601</field>
+            <field name="name">PARASOLE PER CASANOVA</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_620">
+            <field name="code">620</field>
+            <field name="name">SUPPORTO PER LIBRI/TABLET</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_649">
+            <field name="code">649</field>
+            <field name="name">CUSCINO POGGIAT. 49 CM</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_650">
+            <field name="code">650</field>
+            <field name="name">CUSCINO POGGIAT. 50 CM</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_651">
+            <field name="code">651</field>
+            <field name="name">CUSCINO POGGIAT. 58 CM</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_800">
+            <field name="code">800</field>
+            <field name="name">SEDIA SPRING</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_810">
+            <field name="code">810</field>
+            <field name="name">POLTRONA SPAGHETTI</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_831">
+            <field name="code">831</field>
+            <field name="name">SEDIA CHIUDIBILE ATENA CON BRACCIOLI</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_900">
+            <field name="code">900</field>
+            <field name="name">POLTRONA IN LEGNO LINDA 2 POS.</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_901">
+            <field name="code">901</field>
+            <field name="name">SGABELLO/POGGIAPIEDI MATTY IN LEGNO</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+		<record model="structure.block.value" id="data_structure_block_value_930">
+            <field name="code">930</field>
+            <field name="name">SDRAIO LEGNO</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+        <record model="structure.block.value" id="data_structure_block_value_931">
+            <field name="code">931</field>
+            <field name="name">SGABELLO/POGGIAPIEDI IN LEGNO</field>
+            <field name="block_id" ref="data_structure_block_1_3"/>
+        </record> 
+
+            <!--FABRIC ELEMENTS-->
+        <record model="structure.block.value" id="data_structure_block_value_fabric_D">
+            <field name="code">D</field>
+            <field name="name">OLEFIN</field>
+            <field name="block_id" ref="data_structure_block_4_6"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fabric_DB">
+            <field name="code">DB</field>
+            <field name="name">OLEFIN CON BRACC.LEGNO</field>
+            <field name="block_id" ref="data_structure_block_4_6"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fabric_IL">
+            <field name="code">IL</field>
+            <field name="name">ACRYPOL</field>
+            <field name="block_id" ref="data_structure_block_4_6"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fabric_L">
+            <field name="code">L</field>
+            <field name="name">ACRYPOL</field>
+            <field name="block_id" ref="data_structure_block_4_6"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fabric_PE">
+            <field name="code">PE</field>
+            <field name="name">POLIESTERE</field>
+            <field name="block_id" ref="data_structure_block_4_6"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fabric_PV">
+            <field name="code">PV</field>
+            <field name="name">PIANO VERNICIATO</field>
+            <field name="block_id" ref="data_structure_block_4_6"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fabric_S">
+            <field name="code">S</field>
+            <field name="name">SOFT OLEFIN</field>
+            <field name="block_id" ref="data_structure_block_4_6"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fabric_S3">
+            <field name="code">S3</field>
+            <field name="name">SOFT TRIPLEX</field>
+            <field name="block_id" ref="data_structure_block_4_6"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fabric_S3B">
+            <field name="code">S3B</field>
+            <field name="name">SOFT TRIPLEX CON BRACC.LEGNO</field>
+            <field name="block_id" ref="data_structure_block_4_6"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fabric_SI">
+            <field name="code">SI</field>
+            <field name="name">SOFT OLEFIN IGNIFUGO</field>
+            <field name="block_id" ref="data_structure_block_4_6"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fabric_TX">
+            <field name="code">TX</field>
+            <field name="name">TEXFIL</field>
+            <field name="block_id" ref="data_structure_block_4_6"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fabric_TXB">
+            <field name="code">TXB</field>
+            <field name="name">TEXFIL CON BRACC.LEGNO</field>
+            <field name="block_id" ref="data_structure_block_4_6"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fabric_TXE">
+            <field name="code">TXE</field>
+            <field name="name">TEXFIL ECO</field>
+            <field name="block_id" ref="data_structure_block_4_6"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fabric_TXR">
+            <field name="code">TXR</field>
+            <field name="name">TEXFIL RIGATO</field>
+            <field name="block_id" ref="data_structure_block_4_6"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fabric_XW">
+            <field name="code">XW</field>
+            <field name="name">TEXFIL TERMOSALDATO</field>
+            <field name="block_id" ref="data_structure_block_4_6"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fabric_XWB">
+            <field name="code">XWB</field>
+            <field name="name">TEXFIL TERMOSALDATO CON BRACC.LEGNO</field>
+            <field name="block_id" ref="data_structure_block_4_6"/>
+        </record>
+
+         <!--FRAME ELEMENTS-->
+        <record model="structure.block.value" id="data_structure_block_value_frame_AL">
+            <field name="code">AL</field>
+            <field name="name">SILVER</field>
+            <field name="block_id" ref="data_structure_block_7_8"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_frame_AN">
+            <field name="code">AN</field>
+            <field name="name">ANTRACITE</field>
+            <field name="block_id" ref="data_structure_block_7_8"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_frame_AR">
+            <field name="code">AR</field>
+            <field name="name">ARANCIO</field>
+            <field name="block_id" ref="data_structure_block_7_8"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_frame_AS">
+            <field name="code">AS</field>
+            <field name="name">SILVER OPACO</field>
+            <field name="block_id" ref="data_structure_block_7_8"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_frame_BI">
+            <field name="code">BI</field>
+            <field name="name">BIANCO</field>
+            <field name="block_id" ref="data_structure_block_7_8"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_frame_BS">
+            <field name="code">BS</field>
+            <field name="name">BIANCO</field>
+            <field name="block_id" ref="data_structure_block_7_8"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_frame_CR">
+            <field name="code">CR</field>
+            <field name="name">CROMATO</field>
+            <field name="block_id" ref="data_structure_block_7_8"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_frame_NC">
+            <field name="code">NC</field>
+            <field name="name">TINTO NOCE</field>
+            <field name="block_id" ref="data_structure_block_7_8"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_frame_NI">
+            <field name="code">NI</field>
+            <field name="name">NERO INTERIO</field>
+            <field name="block_id" ref="data_structure_block_7_8"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_frame_RO">
+            <field name="code">RO</field>
+            <field name="name">ROSSO</field>
+            <field name="block_id" ref="data_structure_block_7_8"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_frame_TA">
+            <field name="code">TA</field>
+            <field name="name">TORTORA</field>
+            <field name="block_id" ref="data_structure_block_7_8"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_frame_VE">
+            <field name="code">VE</field>
+            <field name="name">VERDE CHIARO</field>
+            <field name="block_id" ref="data_structure_block_7_8"/>
+        </record>
+
+         <!-- *********************** FABRIC - COLORS ********************* -->
+            <!-- FABRIC TX - COLORS: -->
+        <record model="structure.block.value" id="data_structure_block_value_fab_col_TX_AC">
+            <field name="code">AC</field>
+            <field name="name">ALICE</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_TX" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fab_col_TX_AK">
+            <field name="code">AK</field>
+            <field name="name">AZZURRO 4188</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_TX" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fab_col_TX_AR">
+            <field name="code">AR</field>
+            <field name="name">ARANCIO 2116</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_TX" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fab_col_TX_AZ1">
+            <field name="code">AZ1</field>
+            <field name="name">AZZURRO 4150</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_TX" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fab_col_TX_BAT">
+            <field name="code">BAT</field>
+            <field name="name">BIANCO/ACQUA/TORTORA</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_TX" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fab_col_TX_BI">
+            <field name="code">BI</field>
+            <field name="name">BIANCO 0108</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_TX" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fab_col_TX_BIAQ">
+            <field name="code">BIAQ</field>
+            <field name="name">BIANCO/ACQUA 0205</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_TX" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fab_col_TX_BIBE">
+            <field name="code">BIBE</field>
+            <field name="name">BIANCO/BEIGE 0271</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_TX" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fab_col_TX_BIGR">
+            <field name="code">BIGR</field>
+            <field name="name">BIANCO/GRIGIO 0601</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_TX" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fab_col_TX_BK">
+            <field name="code">BK</field>
+            <field name="name">BLU 4129</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_TX" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fab_col_TX_BL">
+            <field name="code">BL</field>
+            <field name="name">BLU 4103</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_TX" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fab_col_TX_DR">
+            <field name="code">DR</field>
+            <field name="name">DREAMLINER</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_TX" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fab_col_TX_GI">
+            <field name="code">GI</field>
+            <field name="name">GIALLO 1100</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_TX" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fab_col_TX_GR">
+            <field name="code">GR</field>
+            <field name="name">GRIGIO 0600</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_TX" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fab_col_TX_GU">
+            <field name="code">GU</field>
+            <field name="name">ANTRACITE 0670</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_TX" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fab_col_TX_MG">
+            <field name="code">MG</field>
+            <field name="name">MAGIC 0476</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_TX" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fab_col_TX_MW">
+            <field name="code">MW</field>
+            <field name="name">MARRONE WENGE 5109</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_TX" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fab_col_TX_NE">
+            <field name="code">NE</field>
+            <field name="name">NERO 0400</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_TX" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fab_col_TX_OT">
+            <field name="code">OT</field>
+            <field name="name">OTTANIO 3158</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_TX" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fab_col_TX_RIAR">
+            <field name="code">RIAR</field>
+            <field name="name">RIGATO ARANCIO</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_TX" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fab_col_TX_RIVI">
+            <field name="code">RIVI</field>
+            <field name="name">RIGATO VIOLA</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_TX" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fab_col_TX_RO">
+            <field name="code">RO</field>
+            <field name="name">ROSSO 2109</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_TX" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fab_col_TX_SP">
+            <field name="code">SP</field>
+            <field name="name">SPIRIT 0655</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_TX" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fab_col_TX_SU">
+            <field name="code">SU</field>
+            <field name="name">SUPERIOR</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_TX" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fab_col_TX_TA">
+            <field name="code">TA</field>
+            <field name="name">TORTORA 0711</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_TX" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fab_col_TX_VE">
+            <field name="code">VE</field>
+            <field name="name">VERDE CHIARO 3197</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_TX" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fab_col_TX_VI">
+            <field name="code">VI</field>
+            <field name="name">VIOLA 4164</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_TX" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fab_col_TX_VN">
+            <field name="code">VN</field>
+            <field name="name">VIENNA 0155</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_TX" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fab_col_TX_VP">
+            <field name="code">VP</field>
+            <field name="name">VERDE PISTACCHIO 3124</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_TX" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fab_col_TX_VS">
+            <field name="code">VS</field>
+            <field name="name">VERDE SCURO 3187</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_TX" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+
+          <!--FABRIC - COLORS -->
+              <!-- FABRIC D - COLORS: -->
+        <record model="structure.block.value" id="data_structure_block_value_fab_col_D_AR">
+            <field name="code">AR</field>
+            <field name="name">ARANCIO 8508</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_D" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fab_col_D_B2">
+            <field name="code">B2</field>
+            <field name="name">BLU 2821</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_D" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fab_col_D_BI">
+            <field name="code">BI</field>
+            <field name="name">BIANCO 2602</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_D" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fab_col_D_BIBE">
+            <field name="code">BIBE</field>
+            <field name="name">BIANCO/BEIGE 8506</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_D" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fab_col_D_BINE">
+            <field name="code">BINE</field>
+            <field name="name">BIANCO/NERO 8513</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_D" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fab_col_D_BL">
+            <field name="code">BL</field>
+            <field name="name">BLU 8502</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_D" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fab_col_D_GR">
+            <field name="code">GR</field>
+            <field name="name">GRIGIO 2631</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_D" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fab_col_D_NA">
+            <field name="code">NA</field>
+            <field name="name">ECRU 2710</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_D" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fab_col_D_NE">
+            <field name="code">NE</field>
+            <field name="name">NERO 2501</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_D" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fab_col_D_TA">
+            <field name="code">TA</field>
+            <field name="name">TORTORA 8507</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_D" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fab_col_D_VI">
+            <field name="code">VI</field>
+            <field name="name">VIOLA 183/176</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_D" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fab_col_D_VP">
+            <field name="code">VP</field>
+            <field name="name">VERDE PISTACCHIO 8510</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_D" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fab_col_D_VS">
+            <field name="code">VS</field>
+            <field name="name">VERDE SCURO 8503</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_D" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+
+            <!--FABRIC - COLORS -->
+                <!-- FABRIC IL - COLORS: -->
+         <record model="structure.block.value" id="data_structure_block_value_fab_col_IL_BBVP">
+            <field name="code">BBVP</field>
+            <field name="name">BIANCO/BLU/PISTACCHIO</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_IL" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+         <record model="structure.block.value" id="data_structure_block_value_fab_col_IL_BL">
+            <field name="code">BL</field>
+            <field name="name">BLU</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_IL" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+         <record model="structure.block.value" id="data_structure_block_value_fab_col_IL_NA">
+            <field name="code">NA</field>
+            <field name="name">ECRU'</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_IL" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+         <record model="structure.block.value" id="data_structure_block_value_fab_col_IL_VS">
+            <field name="code">VS</field>
+            <field name="name">VERDE SCURO</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_IL" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+
+            <!--FABRIC - COLORS -->
+            <!-- FABRIC L - COLORS: -->
+        <record model="structure.block.value" id="data_structure_block_value_fab_col_L_BBVP">
+            <field name="code">BBVP</field>
+            <field name="name">BIANCO/BLU/PISTACCHIO</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_L" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+         <record model="structure.block.value" id="data_structure_block_value_fab_col_L_BL">
+            <field name="code">BL</field>
+            <field name="name">BLU</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_L" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+         <record model="structure.block.value" id="data_structure_block_value_fab_col_L_NA">
+            <field name="code">NA</field>
+            <field name="name">ECRU'</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_L" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+         <record model="structure.block.value" id="data_structure_block_value_fab_col_L_VS">
+            <field name="code">VS</field>
+            <field name="name">VERDE SCURO</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_L" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+
+          <!--FABRIC - COLORS -->
+          <!-- FABRIC PE - COLORS: -->
+         <record model="structure.block.value" id="data_structure_block_value_fab_col_PE_AR">
+            <field name="code">AR</field>
+            <field name="name">ARANCIO</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_PE" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+          <record model="structure.block.value" id="data_structure_block_value_fab_col_PE_BL">
+            <field name="code">BL</field>
+            <field name="name">BLU</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_PE" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+          <record model="structure.block.value" id="data_structure_block_value_fab_col_PE_NA">
+            <field name="code">NA</field>
+            <field name="name">ECRU'</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_PE" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+          <record model="structure.block.value" id="data_structure_block_value_fab_col_PE_NE">
+            <field name="code">NE</field>
+            <field name="name">NERO</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_PE" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+          <record model="structure.block.value" id="data_structure_block_value_fab_col_PE_RO">
+            <field name="code">RO</field>
+            <field name="name">ROSSO</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_PE" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+          <record model="structure.block.value" id="data_structure_block_value_fab_col_PE_VE">
+            <field name="code">VE</field>
+            <field name="name">VERDE CHIARO </field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_PE" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+          <record model="structure.block.value" id="data_structure_block_value_fab_col_PE_VS">
+            <field name="code">VS</field>
+            <field name="name">VERDE SCURO</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_PE" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+
+          <!--FABRIC - COLORS -->
+          <!-- FABRIC S3 - COLORS: -->
+        <record model="structure.block.value" id="data_structure_block_value_fab_col_S3_GR">
+            <field name="code">GR</field>
+            <field name="name">GRIGIO</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_S3" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fab_col_S3_NE">
+            <field name="code">NE</field>
+            <field name="name">NERO</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_S3" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fab_col_S3_TA">
+            <field name="code">TA</field>
+            <field name="name">TORTORA</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_S3" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+
+          <!--FABRIC - COLORS -->
+          <!-- FABRIC S3B - COLORS: -->
+        <record model="structure.block.value" id="data_structure_block_value_fab_col_S3B_GR">
+            <field name="code">GR</field>
+            <field name="name">GRIGIO</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_S3B" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fab_col_S3B_NE">
+            <field name="code">NE</field>
+            <field name="name">NERO</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_S3B" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_fab_col_S3B_TA">
+            <field name="code">TA</field>
+            <field name="name">TORTORA</field>
+            <field name="rely_value_id" ref="data_structure_block_value_fabric_S3B" />
+            <field name="block_id" ref="data_structure_block_9_12"/>
+        </record>
+
+         <!--EXTRA INFO-->
+        <record model="structure.block.value" id="data_structure_block_value_extra_S">
+            <field name="code">S</field>
+            <field name="name">IMBALLO SINGOLO</field>
+            <field name="block_id" ref="data_structure_block_13_13"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_extra_P">
+            <field name="code">P</field>
+            <field name="name">CON PARASOLE</field>
+            <field name="block_id" ref="data_structure_block_13_13"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_extra_T">
+            <field name="code">T</field>
+            <field name="name">CON SUPPORTO TABLET</field>
+            <field name="block_id" ref="data_structure_block_13_13"/>
+        </record>
+        <record model="structure.block.value" id="data_structure_block_value_extra_X">
+            <field name="code">X</field>
+            <field name="name">CON PARASOLE, SUPP. TABLET E CUSCINO</field>
+            <field name="block_id" ref="data_structure_block_13_13"/>
+        </record>
+    </data>
+</openerp>
+

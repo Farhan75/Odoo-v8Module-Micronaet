@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+       <record model="log.importation.mode" id="log_importation_mode_order">
+           <field name="name">Order import</field>
+           <field name="note">Order import from import CSV procedure (file code | q | price)</field>
+       </record>
+    </data>
+</openerp>
+

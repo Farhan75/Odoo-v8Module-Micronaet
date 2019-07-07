@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record id="product_template_form_pack_part_view" model="ir.ui.view">
+            <field name="name">product.template.common.pack.part.form</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <!--<field name="length" position="after">
+                    <separator string="Dimension in pack extra description" />
+                    <field name="multipack_dimension" />                
+                </field>-->
+                <group name="packaging" position="before">
+                    <group colspan="4" col="4"> 
+                        <field name="has_multipackage" />
+                        <newline/>
+                        <separator string="Dimension in pack extra description" colspan="4"/>                        
+                        <field name="multipack_dimension" />                
+                    </group>
+                    <separator string="Packaging" colspan="4" attrs="{'invisible':['|',('has_multipackage','=',False),('type','=','service')]}"/>
+                    <field name="multi_pack_ids" attrs="{'invisible':['|',('has_multipackage','=',False),('type','=','service')]}">
+                        <tree string="Multipack">
+                            <field name="sequence" />
+                            <field name="ul_id" />
+                            <field name="code" />
+                            <field name="name" />
+                            <field name="number" sum='total'/>
+                            <field name="height" />
+                            <field name="width" />
+                            <field name="length" />
+                            <field name="weight" />
+                        </tree>
+                        <form string="Multipack">
+                            <sheet>
+                                <group col="4">
+                                    <field name="sequence" />
+                                    <field name="code" />
+
+                                    <field name="name" />
+                                    <field name="ul_id" on_change="onchange_ul_multidimension(ul_id)"/>
+
+                                    <field name="number" />
+                                    <field name="weight" />
+
+                                    <button name="load_from_multipack" string="Load fro pack" type="object" attrs="{'invisible': [('ul_id','=',False)]}"/>
+                                    <newline/>
+                                    <field name="height" />
+                                    <field name="width" />
+                                    <field name="length" />
+                                </group>
+                            </sheet>
+                        </form>
+                    </field>
+                </group>
+               <group name="packaging" position="attributes">
+                   <attribute name="groups"></attribute>
+                   <attribute name="attrs">{'invisible':['|',('has_multipackage','=',True),('type','=','service')]}</attribute>                   
+               </group>
+            </field>
+        </record>
+    </data>
+</openerp>
